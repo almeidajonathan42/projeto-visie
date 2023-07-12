@@ -1,6 +1,7 @@
 "use client";
 
 import styles from "./ArticleItem.module.css";
+import BookmarkStar from "../components/BookmarkStar";
 
 interface Props {
   id: number;
@@ -11,7 +12,7 @@ interface Props {
   link: string;
 }
 
-function ArticleItem(props: Props) {
+export default function ArticleItem(props: Props) {
   const date = new Date(props.date);
 
   const renderDate = (date: Date) => {
@@ -26,7 +27,11 @@ function ArticleItem(props: Props) {
 
   return (
     <div className={styles.container}>
-      <img src={props.image} alt="data does not containg alt text" />
+      <img
+        src={props.image}
+        className={styles.article_image}
+        alt="data does not containg alt text"
+      />
 
       <div className={styles.detail}>
         <p className={styles.title}> {props.title} </p>
@@ -34,10 +39,13 @@ function ArticleItem(props: Props) {
           className={styles.description}
           dangerouslySetInnerHTML={{ __html: props.description }}
         ></div>
-        <p className={styles.date}> {renderDate(date)} </p>
+        <div className={styles.bottom}>
+          <p className={styles.date}> {renderDate(date)} </p>
+          <p> • </p>
+          <BookmarkStar articleId={props.id} size={20} />
+          <p> • </p>
+        </div>
       </div>
     </div>
   );
 }
-
-export default ArticleItem;
