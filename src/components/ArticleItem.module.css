@@ -1,10 +1,12 @@
 .container {
     display: flex;
-    margin-top: 40px;
+    margin: 20px;
 }
 
 .container img {
     height: 200px;
+    width: 382px;
+    object-fit: cover;
     display: flex;
     border-radius: 5px;
 }
