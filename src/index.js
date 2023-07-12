@@ -23,10 +23,10 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<PaginaInicial />} />
-            <Route path="desenvolvimentoPessoal" element={<DesenvolvimentoPessoal />} />
-            <Route path="estrategiaEGestao" element={<EstrategiaEGestao />} />
-            <Route path="gestaoDePessoas" element={<GestaoDePessoas />} />
-            <Route path="lerDepois" element={<LerDepois />} />
+            <Route path="desenvolvimento-pessoal" element={<DesenvolvimentoPessoal />} />
+            <Route path="estrategia-e-gestao" element={<EstrategiaEGestao />} />
+            <Route path="gestao-de-pessoas" element={<GestaoDePessoas />} />
+            <Route path="ler-depois" element={<LerDepois />} />
             <Route path="favoritos" element={<Favoritos />} />
             <Route path="anotacoes" element={<Anotacoes />} />
             <Route path="*" element={<NoPage />} />
