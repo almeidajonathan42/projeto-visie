@@ -1,19 +1,10 @@
 import styles from "./page.module.css";
 import ArticleItem from "../components/ArticleItem";
-
-async function getData() {
-  const res = await fetch("https://endeavor.org.br/wp-json/wp/v2/posts");
-
-  if (!res.ok) {
-    throw new Error("Failed to fetch data");
-  }
-
-  return res.json();
-}
+import { getData } from "../functions";
 
 export default async function PaginaInicial() {
 
-  const articles = await getData();
+  const articles = await getData("https://endeavor.org.br/wp-json/wp/v2/posts");
 
   return (
     <main className={styles.container}>
