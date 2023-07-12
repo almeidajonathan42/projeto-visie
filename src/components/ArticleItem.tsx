@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import styles from "./ArticleItem.module.css";
 
@@ -16,7 +16,11 @@ function ArticleItem(props: Props) {
 
   const renderDate = (date: Date) => {
     return (
-      date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear()
+      ("0" + date.getDate()).slice(-2) +
+      "/" +
+      ("0" + (date.getMonth() + 1)).slice(-2) +
+      "/" +
+      date.getFullYear()
     );
   };
 
