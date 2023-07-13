@@ -46,14 +46,14 @@ export default async function ArticleItem(props: Props) {
           <BookmarkStar
             value={articleDBItem?.isBookmarked || false}
             toggleValue={handleToggleBookmark}
-            articleId={props.id}
+            articleId={props.id.toString()}
             size={20}
           />
           <p> • </p>
           <ReadLater
             value={articleDBItem?.isReadLater || false}
             toggleValue={handleToggleReadLater}
-            articleId={props.id}
+            articleId={props.id.toString()}
             size={20}
           />
         </div>

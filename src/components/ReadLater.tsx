@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 
 
 interface Props {
-  articleId: number;
+  articleId: string;
   value: boolean;
   toggleValue: (id: string, currentValue: boolean) => void;
   size: number;
@@ -22,7 +22,7 @@ export default function ReadLater(props: Props) {
     <div
       className={styles.container}
       onClick={() => {
-        props.toggleValue(props.articleId.toString(), state);
+        props.toggleValue(props.articleId, state);
         setState((prev) => !prev);
         router.refresh();
       }}
