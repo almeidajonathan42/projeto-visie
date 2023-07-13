@@ -1,17 +1,9 @@
 "use client";
 
+import styles from "./BookmarkStar.module.css";
 import { useState } from "react";
 import Image from "next/image";
-import styled from "styled-components";
-import { useRouter } from 'next/navigation';
-
-const Container = styled.div`
-  cursor: pointer;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 5px;
-`;
+import { useRouter } from "next/navigation";
 
 interface Props {
   articleId: number;
@@ -26,10 +18,11 @@ export default function BookmarkStar(props: Props) {
   const router = useRouter();
 
   return (
-    <Container
+    <div
+      className={styles.container}
       onClick={() => {
         props.toggleValue(props.articleId.toString(), state);
-        setState(prev => !prev);
+        setState((prev) => !prev);
         router.refresh();
       }}
     >
@@ -54,6 +47,6 @@ export default function BookmarkStar(props: Props) {
           <p> Favoritar </p>
         </>
       )}
-    </Container>
+    </div>
   );
 }
