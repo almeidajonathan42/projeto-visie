@@ -1,4 +1,4 @@
-import { getData, renderDate } from "@/functions";
+import { getData, renderDate, handleToggleBookmark, handleToggleReadLater } from "@/functions";
 import BackButton from "../../components/BackButton";
 import BookmarkStar from "../../components/BookmarkStar";
 import ReadLater from "../../components/ReadLater";
@@ -24,6 +24,9 @@ export default async function Page(props: any) {
   const article = data[0];
 
   const note = await getNote(articleId);
+  const articleDBItem = await prisma.article.findFirst({
+    where: { id: articleId }
+  });
 
   async function handleSaveNote(note: string) {
     "use server";
@@ -55,9 +58,19 @@ export default async function Page(props: any) {
         <div className={styles.bottom}>
           <p className={styles.date}> {renderDate(new Date(article.date))} </p>
           <p> • </p>
-          <BookmarkStar articleId={articleId} size={20} />
+          <BookmarkStar
+            value={articleDBItem?.isBookmarked || false}
+            toggleValue={handleToggleBookmark}
+            articleId={articleId}
+            size={20}
+          />
           <p> • </p>
-          <ReadLater articleId={articleId} size={20} />
+          <ReadLater
+            value={articleDBItem?.isReadLater || false}
+            toggleValue={handleToggleReadLater}
+            articleId={articleId}
+            size={20}
+          />
         </div>
         <div
           className={styles.text}
