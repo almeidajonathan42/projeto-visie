@@ -3,6 +3,8 @@
 import styles from "./ArticleItem.module.css";
 import BookmarkStar from "../components/BookmarkStar";
 import ReadLater from "../components/ReadLater";
+import Link from 'next/link';
+import { renderDate } from "@/functions";
 
 interface Props {
   id: number;
@@ -16,26 +18,19 @@ interface Props {
 export default function ArticleItem(props: Props) {
   const date = new Date(props.date);
 
-  const renderDate = (date: Date) => {
-    return (
-      ("0" + date.getDate()).slice(-2) +
-      "/" +
-      ("0" + (date.getMonth() + 1)).slice(-2) +
-      "/" +
-      date.getFullYear()
-    );
-  };
-
   return (
     <div className={styles.container}>
-      <img
-        src={props.image}
-        className={styles.article_image}
-        alt="data does not containg alt text"
-      />
-
+      <Link href={"/artigo?id=" + props.id}>
+        <img
+          src={props.image}
+          className={styles.article_image}
+          alt="data does not containg alt text"
+        />
+      </Link>
       <div className={styles.detail}>
-        <p className={styles.title}> {props.title} </p>
+        <Link href={"/artigo?id=" + props.id}>
+          <p className={styles.title}> {props.title} </p>
+        </Link>
         <div
           className={styles.description}
           dangerouslySetInnerHTML={{ __html: props.description }}
