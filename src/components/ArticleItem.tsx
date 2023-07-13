@@ -2,6 +2,7 @@
 
 import styles from "./ArticleItem.module.css";
 import BookmarkStar from "../components/BookmarkStar";
+import ReadLater from "../components/ReadLater";
 
 interface Props {
   id: number;
@@ -44,6 +45,7 @@ export default function ArticleItem(props: Props) {
           <p> • </p>
           <BookmarkStar articleId={props.id} size={20} />
           <p> • </p>
+          <ReadLater articleId={props.id} size={20} />
         </div>
       </div>
     </div>
