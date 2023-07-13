@@ -1,5 +1,8 @@
 import { getData, renderDate } from "@/functions";
 import BackButton from "../../components/BackButton";
+import BookmarkStar from "../../components/BookmarkStar";
+import ReadLater from "../../components/ReadLater";
+import styles from "./page.module.css";
 
 export default async function Artigo(props: any) {
   const articleId = props.searchParams.id;
@@ -10,12 +13,31 @@ export default async function Artigo(props: any) {
   const article = data[0];
 
   return (
-    <main>
+    <main className={styles.container}>
       <BackButton />
-      <h1>{article.title.rendered}</h1>
-      <div dangerouslySetInnerHTML={{ __html: article.excerpt.rendered }}></div>
-      <p>{renderDate(new Date(article.date))}</p>
-      <div dangerouslySetInnerHTML={{ __html: article.content.rendered }}></div>
+
+      <div className={styles.article}>
+        <h1 className={styles.title}> {article.title.rendered} </h1>
+        <div
+          className={styles.excerpt}
+          dangerouslySetInnerHTML={{ __html: article.excerpt.rendered }}
+        ></div>
+        <div className={styles.bottom}>
+          <p className={styles.date}> {renderDate(new Date(article.date))} </p>
+          <p> • </p>
+          <BookmarkStar articleId={articleId} size={20} />
+          <p> • </p>
+          <ReadLater articleId={articleId} size={20} />
+        </div>
+        <div
+          className={styles.text}
+          dangerouslySetInnerHTML={{ __html: article.content.rendered }}
+        ></div>
+      </div>
+      <form>
+        <input type="textarea" />
+        <button type="submit"> Criar anotação </button>
+      </form>
     </main>
   );
 }
