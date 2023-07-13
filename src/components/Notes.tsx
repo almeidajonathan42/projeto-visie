@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import styled from "styled-components";
+import { useRouter } from 'next/navigation';
 
 const Form = styled.form`
   display: flex;
@@ -22,6 +23,7 @@ const Textarea = styled.textarea`
   font-size: 16px;
   resize: none;
   font-family: inherit;
+  margin-top: 20px;
 `;
 
 const Button = styled.button`
@@ -37,8 +39,15 @@ const Button = styled.button`
   font-weight: 500;
 `;
 
-export default function Notes(props: any) {
-  const [text, setText] = useState("");
+interface Props {
+  handleSaveNote: (note: string) => void;
+  existingNote: string;
+}
+
+export default function Note(props: Props) {
+  const [text, setText] = useState(props.existingNote);
+  
+  const router = useRouter();
 
   return (
     <Form>
@@ -48,7 +57,15 @@ export default function Notes(props: any) {
           setText(e.target.value);
         }}
       />
-      <Button type="submit"> Criar anotação </Button>
+      <Button
+        onClick={(e: any) => {
+          e.preventDefault();
+          props.handleSaveNote(text);
+          router.refresh();
+        }}
+      >
+        Criar anotação
+      </Button>
     </Form>
   );
 }

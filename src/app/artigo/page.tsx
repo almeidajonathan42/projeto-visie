@@ -2,8 +2,18 @@ import { getData, renderDate } from "@/functions";
 import BackButton from "../../components/BackButton";
 import BookmarkStar from "../../components/BookmarkStar";
 import ReadLater from "../../components/ReadLater";
-import Notes from "../../components/Notes";
+import Note from "../../components/Notes";
 import styles from "./page.module.css";
+import { prisma } from "@/db";
+
+
+async function getNote(articleId: string) {
+  const article = await prisma.article.findFirst({
+    where: { id: articleId }
+  });
+
+  return article?.note;
+}
 
 export default async function Page(props: any) {
   const articleId = props.searchParams.id;
@@ -12,6 +22,25 @@ export default async function Page(props: any) {
     "https://endeavor.org.br/wp-json/wp/v2/posts?include=" + articleId
   );
   const article = data[0];
+
+  const note = await getNote(articleId);
+
+  async function handleSaveNote(note: string) {
+    "use server";
+
+    if (note.length > 0) {
+      await prisma.article.upsert({
+        where: { id: articleId },
+        update: { note: note },
+        create: {
+          id: articleId,
+          isBookmarked: false,
+          isReadLater: false,
+          note: note,
+        },
+      });
+    }
+  }
 
   return (
     <main className={styles.container}>
@@ -35,7 +64,8 @@ export default async function Page(props: any) {
           dangerouslySetInnerHTML={{ __html: article.content.rendered }}
         ></div>
       </div>
-      <Notes />
+
+      <Note handleSaveNote={handleSaveNote} existingNote={note || ""} />
     </main>
   );
 }
