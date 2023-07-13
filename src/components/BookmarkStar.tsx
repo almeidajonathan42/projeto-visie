@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import styled from "styled-components";
+import { useRouter } from 'next/navigation';
 
 const Container = styled.div`
   cursor: pointer;
@@ -14,35 +15,24 @@ const Container = styled.div`
 
 interface Props {
   articleId: number;
+  value: boolean;
+  toggleValue: (id: string, currentValue: boolean) => void;
   size: number;
 }
 
 export default function BookmarkStar(props: Props) {
-  if (localStorage.getItem("bookmarks") == null) {
-    localStorage.setItem("bookmarks", "");
-  }
+  const [state, setState] = useState(props.value);
 
-  const isBookmarked = localStorage.getItem("bookmarks")?.includes(props.articleId.toString());
-
-  const [state, setState] = useState(isBookmarked);
-
-  const handleClick = () => {
-    if (isBookmarked) {
-      let bookmarks = localStorage.getItem("bookmarks") || "";
-      bookmarks = bookmarks?.replace(props.articleId + " ", "");
-      localStorage.setItem("bookmarks", bookmarks);
-      setState(false);
-    } else {
-      localStorage.setItem(
-        "bookmarks",
-        localStorage.getItem("bookmarks") + props.articleId.toString() + " "
-      );
-      setState(true);
-    }
-  };
+  const router = useRouter();
 
   return (
-    <Container onClick={handleClick}>
+    <Container
+      onClick={() => {
+        props.toggleValue(props.articleId.toString(), state);
+        setState(prev => !prev);
+        router.refresh();
+      }}
+    >
       {state ? (
         <>
           <Image
