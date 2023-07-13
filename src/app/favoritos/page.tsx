@@ -1,7 +1,9 @@
+import styles from "./page.module.css";
+
 export default function Favoritos() {
   return (
-    <main>
-      <h1>Favoritos</h1>
+    <main className={styles.container}>
+
     </main>
   );
 }
