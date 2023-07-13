@@ -1,10 +1,9 @@
-"use client";
-
 import styles from "./ArticleItem.module.css";
 import BookmarkStar from "../components/BookmarkStar";
 import ReadLater from "../components/ReadLater";
-import Link from 'next/link';
-import { renderDate } from "@/functions";
+import Link from "next/link";
+import { renderDate, handleToggleBookmark } from "@/functions";
+import { prisma } from "@/db";
 
 interface Props {
   id: number;
@@ -15,8 +14,14 @@ interface Props {
   link: string;
 }
 
-export default function ArticleItem(props: Props) {
+export default async function ArticleItem(props: Props) {
   const date = new Date(props.date);
+
+  const articleDBItem = await prisma.article.findFirst({
+    where: { id: props.id.toString() },
+  });
+
+  console.log("Article: " + articleDBItem);
 
   return (
     <div className={styles.container}>
@@ -38,7 +43,12 @@ export default function ArticleItem(props: Props) {
         <div className={styles.bottom}>
           <p className={styles.date}> {renderDate(date)} </p>
           <p> • </p>
-          <BookmarkStar articleId={props.id} size={20} />
+          <BookmarkStar
+            value={articleDBItem?.isBookmarked || false}
+            toggleValue={handleToggleBookmark}
+            articleId={props.id}
+            size={20}
+          />
           <p> • </p>
           <ReadLater articleId={props.id} size={20} />
         </div>
