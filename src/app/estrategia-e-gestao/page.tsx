@@ -1,4 +1,4 @@
-export default function EstrategiaEGestao() {
+export default function Page() {
   return (
     <main>
       <h1>Estratégia e Gestão</h1>

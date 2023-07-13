@@ -1,4 +1,4 @@
-export default function LerDepois() {
+export default function Page() {
   return (
     <main>
       <h1>Ler Depois</h1>

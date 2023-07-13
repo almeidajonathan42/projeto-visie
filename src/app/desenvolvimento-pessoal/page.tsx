@@ -2,7 +2,7 @@ import styles from "./page.module.css";
 import ArticleItem from "../../components/ArticleItem";
 import { getData } from "../../functions";
 
-export default async function DesenvolvimentoPessoal() {
+export default async function Page() {
 
   const articles = await getData("https://endeavor.org.br/wp-json/wp/v2/posts?categories=1309");
 

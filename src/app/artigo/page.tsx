@@ -5,7 +5,7 @@ import ReadLater from "../../components/ReadLater";
 import Notes from "../../components/Notes";
 import styles from "./page.module.css";
 
-export default async function Artigo(props: any) {
+export default async function Page(props: any) {
   const articleId = props.searchParams.id;
 
   const data = await getData(
