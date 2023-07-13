@@ -2,6 +2,7 @@ import { getData, renderDate } from "@/functions";
 import BackButton from "../../components/BackButton";
 import BookmarkStar from "../../components/BookmarkStar";
 import ReadLater from "../../components/ReadLater";
+import Notes from "../../components/Notes";
 import styles from "./page.module.css";
 
 export default async function Artigo(props: any) {
@@ -34,10 +35,7 @@ export default async function Artigo(props: any) {
           dangerouslySetInnerHTML={{ __html: article.content.rendered }}
         ></div>
       </div>
-      <form>
-        <input type="textarea" />
-        <button type="submit"> Criar anotação </button>
-      </form>
+      <Notes />
     </main>
   );
 }
