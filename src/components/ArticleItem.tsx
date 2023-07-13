@@ -2,7 +2,7 @@ import styles from "./ArticleItem.module.css";
 import BookmarkStar from "../components/BookmarkStar";
 import ReadLater from "../components/ReadLater";
 import Link from "next/link";
-import { renderDate, handleToggleBookmark } from "@/functions";
+import { renderDate, handleToggleBookmark, handleToggleReadLater } from "@/functions";
 import { prisma } from "@/db";
 
 interface Props {
@@ -50,7 +50,12 @@ export default async function ArticleItem(props: Props) {
             size={20}
           />
           <p> • </p>
-          <ReadLater articleId={props.id} size={20} />
+          <ReadLater
+            value={articleDBItem?.isReadLater || false}
+            toggleValue={handleToggleReadLater}
+            articleId={props.id}
+            size={20}
+          />
         </div>
       </div>
     </div>

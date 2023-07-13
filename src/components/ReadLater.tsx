@@ -1,48 +1,32 @@
 "use client";
 
+import styles from "./ReadLater.module.css";
 import { useState } from "react";
 import Image from "next/image";
-import styled from "styled-components";
+import { useRouter } from "next/navigation";
 
-const Container = styled.div`
-  cursor: pointer;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 5px;
-`;
 
 interface Props {
   articleId: number;
+  value: boolean;
+  toggleValue: (id: string, currentValue: boolean) => void;
   size: number;
 }
 
 export default function ReadLater(props: Props) {
-  if (localStorage.getItem("readLater") == null) {
-    localStorage.setItem("readLater", "");
-  }
+  const [state, setState] = useState(props.value);
 
-  const isBookmarked = localStorage.getItem("readLater")?.includes(props.articleId.toString());
-
-  const [state, setState] = useState(isBookmarked);
-
-  const handleClick = () => {
-    if (isBookmarked) {
-      let readLater = localStorage.getItem("readLater") || "";
-      readLater = readLater?.replace(props.articleId + " ", "");
-      localStorage.setItem("readLater", readLater);
-      setState(false);
-    } else {
-      localStorage.setItem(
-        "readLater",
-        localStorage.getItem("readLater") + props.articleId.toString() + " "
-      );
-      setState(true);
-    }
-  };
+  const router = useRouter();
 
   return (
-    <Container onClick={handleClick}>
+    <div
+      className={styles.container}
+      onClick={() => {
+        props.toggleValue(props.articleId.toString(), state);
+        setState((prev) => !prev);
+        router.refresh();
+      }}
+    >
       {state ? (
         <>
           <Image
@@ -64,6 +48,6 @@ export default function ReadLater(props: Props) {
           <p> Ler mais tarde </p>
         </>
       )}
-    </Container>
+    </div>
   );
 }
