@@ -34,3 +34,18 @@ export async function handleToggleBookmark(articleId: string, currentValue: bool
     },
   });
 }
+
+export async function handleToggleReadLater(articleId: string, currentValue: boolean) {
+  "use server";
+
+  await prisma.article.upsert({
+    where: { id: articleId },
+    update: { isReadLater: !currentValue },
+    create: {
+      id: articleId,
+      isBookmarked: false,
+      isReadLater: !currentValue,
+      note: "",
+    },
+  });
+}
