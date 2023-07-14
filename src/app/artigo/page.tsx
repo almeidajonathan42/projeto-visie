@@ -47,8 +47,6 @@ export default async function Page(props: any) {
 
   return (
     <main className={styles.container}>
-      <BackButton />
-
       <div className={styles.article}>
         <h1 className={styles.title}> {article.title.rendered} </h1>
         <div
@@ -79,6 +77,8 @@ export default async function Page(props: any) {
       </div>
 
       <Note handleSaveNote={handleSaveNote} existingNote={note || ""} />
+
+      <BackButton />
     </main>
   );
 }
