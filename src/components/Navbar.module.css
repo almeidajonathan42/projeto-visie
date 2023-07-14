@@ -12,3 +12,7 @@
     margin: 0 15px;
     color: black;
   }
+
+  .selected a {
+    font-weight: 800;
+  }

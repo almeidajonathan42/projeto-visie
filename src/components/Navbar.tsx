@@ -1,4 +1,7 @@
+"use client"
+
 import styles from "./Navbar.module.css";
+import { usePathname } from "next/navigation";
 
 const items = [
   { title: "Página Inicial", url: "/" },
@@ -11,11 +14,15 @@ const items = [
 ];
 
 export default function Navbar() {
+
+  const path = usePathname();
+
   return (
     <nav className={styles.navbar}>
       {items.map((item) => {
+        const isSelected = item.url == path;
         return (
-          <div key={item.title}>
+          <div key={item.title} className={isSelected ? styles.selected : ""}>
             <a href={item.url}>{item.title}</a>
           </div>
         );
