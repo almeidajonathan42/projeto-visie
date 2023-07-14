@@ -23,8 +23,6 @@ export default async function PaginaInicial(props: any) {
   const articles = await res.json();
   const pageTotal = res.headers.get("X-WP-TotalPages") || "1";
 
-  
-
   async function handleForwardPagination(arg: any) {
     "use server"
 
