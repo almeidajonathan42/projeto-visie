@@ -5,7 +5,7 @@
 }
 
 .article {
-  width: 700px;
+  width: 900px;
 }
 
 .title {
@@ -67,7 +67,7 @@
 }
 
 .text img {
-  max-width: 700px;
+  max-width: 900px;
   height: auto;
   margin: 30px 0;
 }
