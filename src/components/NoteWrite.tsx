@@ -44,7 +44,7 @@ interface Props {
   existingNote: string;
 }
 
-export default function Note(props: Props) {
+export default function NoteWrite(props: Props) {
   const [text, setText] = useState(props.existingNote);
   
   const router = useRouter();

@@ -2,7 +2,7 @@ import { getData, renderDate, handleToggleBookmark, handleToggleReadLater } from
 import BackButton from "../../components/BackButton";
 import BookmarkStar from "../../components/BookmarkStar";
 import ReadLater from "../../components/ReadLater";
-import Note from "../../components/Notes";
+import NoteWrite from "../../components/NoteWrite";
 import styles from "./page.module.css";
 import { prisma } from "@/db";
 
@@ -76,7 +76,7 @@ export default async function Page(props: any) {
         ></div>
       </div>
 
-      <Note handleSaveNote={handleSaveNote} existingNote={note || ""} />
+      <NoteWrite handleSaveNote={handleSaveNote} existingNote={note || ""} />
 
       <BackButton />
     </main>
