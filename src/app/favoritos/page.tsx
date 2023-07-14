@@ -1,11 +1,6 @@
 import styles from "./page.module.css";
 import { prisma } from "@/db";
-import {
-  getData,
-  renderDate,
-  handleToggleBookmark,
-  handleToggleReadLater,
-} from "@/functions";
+import { getData } from "@/functions";
 import ArticleItem from "../../components/ArticleItem";
 import BackButton from "@/components/BackButton";
 
