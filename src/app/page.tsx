@@ -1,15 +1,21 @@
 import styles from "./page.module.css";
 import ArticleItem from "../components/ArticleItem";
 import Pagination from "../components/Pagination";
-import { getData } from "../functions";
 
-export default async function PaginaInicial() {
-  const articles = await getData("https://endeavor.org.br/wp-json/wp/v2/posts");
+const categories = [
+  { id: "1309", name: "Desenvolvimento Pessoal" },
+  { id: "1288", name: "Estratégia e Gestão" },
+  { id: "1317", name: "Gestão de Pessoas" },
+];
 
-  const pageTotal = await (
-    await fetch("https://endeavor.org.br/wp-json/wp/v2/posts")
-  ).headers.get("X-WP-TotalPages") || "1";
-  const currentPage = 1;
+export default async function PaginaInicial(props: any) {
+  const categories = props.searchParams.categories;
+  const url = "https://endeavor.org.br/wp-json/wp/v2/posts?categories=" + categories;
+  const res = await fetch(url);
+  const articles = await res.json();
+  const pageTotal = res.headers.get("X-WP-TotalPages") || "1";
+
+  let currentPage = 1;
 
   return (
     <main className={styles.container}>
