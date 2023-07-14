@@ -33,7 +33,7 @@ export default async function Page() {
               id={article.id}
               image={article.yoast_head_json.og_image[0].url}
               title={article.title.rendered}
-              description={article.excerpt.rendered}
+              excerpt={article.excerpt.rendered}
               date={article.date}
               link={article.link}
             />

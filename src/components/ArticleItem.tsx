@@ -9,7 +9,7 @@ interface Props {
   id: number;
   image: string;
   title: string;
-  description: string;
+  excerpt: string;
   date: string;
   link: string;
 }
@@ -35,8 +35,8 @@ export default async function ArticleItem(props: Props) {
           <p className={styles.title}> {props.title} </p>
         </Link>
         <div
-          className={styles.description}
-          dangerouslySetInnerHTML={{ __html: props.description }}
+          className={styles.excerpt}
+          dangerouslySetInnerHTML={{ __html: props.excerpt }}
         ></div>
         <div className={styles.bottom}>
           <p className={styles.date}> {renderDate(date)} </p>
