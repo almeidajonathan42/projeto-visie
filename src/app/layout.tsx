@@ -2,6 +2,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import styles from "./layout.module.css";
+import Navbar from "../components/Navbar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,15 +24,7 @@ export default function RootLayout({
           <a href="/"> Teste - Visie Padrões Web </a>
         </header>
 
-        <nav className={styles.navbar}>
-          <a href="/"> Página Inicial </a>
-          <a href="/desenvolvimento-pessoal"> Desenvolvimento Pessoal </a>
-          <a href="/estrategia-e-gestao"> Estratégia e Gestão </a>
-          <a href="/gestao-de-pessoas"> Gestão de Pessoas </a>
-          <a href="/ler-depois"> Ler Depois </a>
-          <a href="/favoritos"> Favoritos </a>
-          <a href="/anotacoes"> Anotações </a>
-        </nav>
+        <Navbar />
 
         {children}
 
