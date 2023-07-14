@@ -35,7 +35,7 @@ export default function ReadLater(props: Props) {
             width={props.size}
             height={props.size}
           />
-          <p> Marcado para ler mais tarde </p>
+          <p> Marcado para ler depois </p>
         </>
       ) : (
         <>
@@ -45,7 +45,7 @@ export default function ReadLater(props: Props) {
             width={props.size}
             height={props.size}
           />
-          <p> Ler mais tarde </p>
+          <p> Ler depois </p>
         </>
       )}
     </div>
