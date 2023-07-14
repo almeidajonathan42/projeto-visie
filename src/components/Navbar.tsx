@@ -22,7 +22,6 @@ export default function Navbar() {
       {items.map((item) => {
         let isSelected = false;
         if (params.get("categories") == null) {
-          console.log("comparando itemurl e path = " + item.url == path);
           isSelected = item.url == path;
         } else {
           isSelected = item.url == "/?categories=" + params.get("categories");
