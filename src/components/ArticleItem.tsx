@@ -21,8 +21,6 @@ export default async function ArticleItem(props: Props) {
     where: { id: props.id.toString() },
   });
 
-  console.log("Article: " + articleDBItem);
-
   return (
     <div className={styles.container}>
       <Link href={"/artigo?id=" + props.id}>
