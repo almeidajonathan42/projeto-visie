@@ -41,7 +41,7 @@ export default async function Page() {
         );
       })}
 
-      {articles.length > 5 && <BackButton />}
+      <BackButton />
     </main>
   );
 }
