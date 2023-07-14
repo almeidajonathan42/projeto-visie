@@ -23,13 +23,13 @@ export default async function PaginaInicial(props: any) {
   const articles = await res.json();
   const pageTotal = res.headers.get("X-WP-TotalPages") || "1";
 
-  async function handleForwardPagination(arg: any) {
+  async function handleForwardPagination() {
     "use server"
 
     currentPage++;
   }
 
-  async function handleBackwardsPagination(arg: any) {
+  async function handleBackwardsPagination() {
     "use server"
 
     currentPage--;
