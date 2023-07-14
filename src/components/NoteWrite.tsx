@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import styled from "styled-components";
 import { useRouter } from "next/navigation";
 import styles from "./NoteWrite.module.css";
 
