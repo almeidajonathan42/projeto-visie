@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 import styled from "styled-components";
-import { useRouter } from 'next/navigation';
+import { useRouter } from "next/navigation";
+import styles from "./NoteWrite.module.css";
 
 const Form = styled.form`
   display: flex;
@@ -46,18 +47,20 @@ interface Props {
 
 export default function NoteWrite(props: Props) {
   const [text, setText] = useState(props.existingNote);
-  
+
   const router = useRouter();
 
   return (
-    <Form>
-      <Textarea
+    <form className={styles.form}>
+      <textarea
+        className={styles.textarea}
         value={text}
         onChange={(e: any) => {
           setText(e.target.value);
         }}
       />
-      <Button
+      <button
+        className={styles.button}
         onClick={(e: any) => {
           e.preventDefault();
           props.handleSaveNote(text);
@@ -65,7 +68,7 @@ export default function NoteWrite(props: Props) {
         }}
       >
         Criar anotação
-      </Button>
-    </Form>
+      </button>
+    </form>
   );
 }
