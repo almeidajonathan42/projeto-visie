@@ -11,6 +11,7 @@ interface Props {
 
 export default function NoteWrite(props: Props) {
   const [text, setText] = useState(props.existingNote);
+  const [isNoteSaved, setIsNoteSaved] = useState(props.existingNote || false);
 
   const router = useRouter();
 
@@ -28,10 +29,11 @@ export default function NoteWrite(props: Props) {
         onClick={(e: any) => {
           e.preventDefault();
           props.handleSaveNote(text);
+          setIsNoteSaved(true);
           router.refresh();
         }}
       >
-        Criar anotação
+        {isNoteSaved ? "Editar anotação" : "Criar anotação" }
       </button>
     </form>
   );

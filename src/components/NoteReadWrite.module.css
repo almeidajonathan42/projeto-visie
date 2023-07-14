@@ -1,0 +1,67 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 40px;
+  align-items: flex-end;
+}
+
+.textarea {
+  height: 200px;
+  width: 700px;
+  margin-bottom: 15px;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  font-size: 16px;
+  resize: none;
+  font-family: inherit;
+  margin-top: 20px;
+}
+
+.note {
+  color: rgb(117, 117, 117);
+  font-style: italic;
+  font-size: 18px;
+  font-weight: 500;
+  margin-top: 30px;
+  background: #f8f8f8;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  white-space: pre-wrap;
+}
+
+.button_container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.button {
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background: #09e1cd;
+  border: none;
+  border-radius: 3px;
+  padding: 10px 15px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.red_button {
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background: #e57373;
+  border: none;
+  border-radius: 3px;
+  padding: 10px 15px;
+  font-size: 16px;
+  font-weight: 500;
+}
