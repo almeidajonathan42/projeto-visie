@@ -1,9 +1,15 @@
 import styles from "./page.module.css";
 import ArticleItem from "../components/ArticleItem";
+import Pagination from "../components/Pagination";
 import { getData } from "../functions";
 
 export default async function PaginaInicial() {
   const articles = await getData("https://endeavor.org.br/wp-json/wp/v2/posts");
+
+  const pageTotal = await (
+    await fetch("https://endeavor.org.br/wp-json/wp/v2/posts")
+  ).headers.get("X-WP-TotalPages") || "1";
+  const currentPage = 1;
 
   return (
     <main className={styles.container}>
@@ -21,6 +27,8 @@ export default async function PaginaInicial() {
           </div>
         );
       })}
+
+      <Pagination currentPage={currentPage} pageTotal={parseInt(pageTotal)} />
     </main>
   );
 }
