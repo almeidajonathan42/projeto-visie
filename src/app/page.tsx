@@ -1,6 +1,7 @@
 import styles from "./page.module.css";
 import ArticleItem from "../components/ArticleItem";
 import Pagination from "../components/Pagination";
+import { redirect } from 'next/navigation';
 
 const categories = [
   { id: "1309", name: "Desenvolvimento Pessoal" },
@@ -9,6 +10,11 @@ const categories = [
 ];
 
 export default async function PaginaInicial(props: any) {
+
+  if (props.searchParams.categories == null) {
+    redirect('/?categories=1309,1288,1317');
+  }
+
   const categories = props.searchParams.categories;
   const url = "https://endeavor.org.br/wp-json/wp/v2/posts?categories=" + categories;
   const res = await fetch(url);
