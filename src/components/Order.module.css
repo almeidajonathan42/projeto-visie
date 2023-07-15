@@ -1,0 +1,12 @@
+.container {
+    align-self: flex-end;
+    display: flex;
+    flex-direction: row;
+    margin: 20px 0;
+    color: #09e1cd;
+}
+
+.order_text {
+    margin: 0 30px 0 5px;
+    cursor: pointer;
+}
