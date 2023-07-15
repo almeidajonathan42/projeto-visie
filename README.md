@@ -14,3 +14,5 @@ pnpm dev
 ```
 
 Então abra [http://localhost:3000](http://localhost:3000) para visualizar o projeto.
+
+Este projeto faz uso de Next.js, Typescript e Prisma para gerenciamento do banco de dados.
