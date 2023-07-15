@@ -1,6 +1,6 @@
 Este projeto foi desenvolvido por Jonathan Rocha de Almeida como parte do processo seletivo para vaga de Tech Lead na empresa Visie.
 
-Para rodar o projeto clone esse repositório e execute os seguintes comandos:
+Para rodar o projeto: clone este repositório e execute os seguintes comandos:
 
 
 ```
