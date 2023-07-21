@@ -31,7 +31,7 @@ export default async function Page() {
           <div key={article.id}>
             <ArticleItem
               id={article.id}
-              image={article.yoast_head_json.og_image[0].url}
+              image={article.default_img[0]}
               title={article.title.rendered}
               excerpt={article.excerpt.rendered}
               date={article.date}
