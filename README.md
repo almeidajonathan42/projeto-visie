@@ -6,7 +6,7 @@ Para rodar o projeto: clone este repositório e execute os seguintes comandos:
 ```
 npm install
 
-npx npx prisma migrate dev --name init
+npx prisma migrate dev --name init
 
 npm run dev
 # ou
